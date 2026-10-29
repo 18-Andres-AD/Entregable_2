@@ -1,0 +1,24 @@
+<header class="banner">
+    <h1>Chat</h1>
+    {{!-- <p>Conéctate, comparte y conversa en tiempo real</p> --}}
+</header>
+
+<main class="chat">
+    <form id="chatForm">
+        <label for="username">UserName:</label>
+        <input type="text" id="username" placeholder="ejemplo" autocomplete="off" required>
+
+        <label for="message">Mensaje:</label>
+        <input type="text" id="message" placeholder="Escribe tu mensaje..." autocomplete="off" required>
+
+        <button type="submit">Enviar</button>
+    </form>
+
+    <section>
+        <h2>Mensajes</h2>
+        <div id="messageLogs" class="messages"></div>
+    </section>
+</main>
+
+<script src="/socket.io/socket.io.js"></script>
+<script src="/js/chat.js"></script>
