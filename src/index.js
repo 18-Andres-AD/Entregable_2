@@ -9,7 +9,6 @@ import viewsRouter from './routes/views.router.js';
 const app = express();
 const PORT = 3000;
 
-// Socket.IO necesita el servidor http, no solo la app de express
 const httpServer = createServer(app);
 const io = new Server(httpServer);
 
@@ -21,7 +20,6 @@ app.use(express.static(path.join(__dirname, '..', 'public')));
 
 app.use('/', viewsRouter);
 
-// Historial en memoria, así quien entra después ve los mensajes anteriores
 const messages = [];
 
 io.on('connection', (socket) => {
@@ -33,7 +31,6 @@ io.on('connection', (socket) => {
         if (!user || !message) return;
         const newMessage = { user, message, time: new Date().toLocaleTimeString('es-CO') };
         messages.push(newMessage);
-        // Se envía a todos los conectados, incluido quien lo mandó
         io.emit('newMessage', newMessage);
     });
 

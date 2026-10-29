@@ -1,6 +1,37 @@
+<svg width="0" height="0" style="position: absolute">
+    <symbol id="avion" viewBox="0 0 24 24">
+        <path d="M2 11 22 2 13 22 11 13Z" />
+        <path d="M22 2 11 13" />
+    </symbol>
+    <symbol id="sobre" viewBox="0 0 24 24">
+        <rect x="3" y="5" width="18" height="14" rx="2" />
+        <path d="M3 7 12 13 21 7" />
+    </symbol>
+    <symbol id="burbuja" viewBox="0 0 24 24">
+        <path d="M5 4h14a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-8l-5 4v-4H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2Z" />
+        <path d="M8 10.5h.01M12 10.5h.01M16 10.5h.01" />
+    </symbol>
+</svg>
+
+<div class="fondo-iconos" aria-hidden="true">
+    <span class="avion"><svg><use href="#avion" /></svg></span>
+    <span class="avion"><svg><use href="#avion" /></svg></span>
+    <span class="avion"><svg><use href="#avion" /></svg></span>
+    <span class="avion"><svg><use href="#avion" /></svg></span>
+    <span class="avion"><svg><use href="#avion" /></svg></span>
+    <span class="avion"><svg><use href="#avion" /></svg></span>
+
+    <span class="flotante"><svg><use href="#sobre" /></svg></span>
+    <span class="flotante"><svg><use href="#burbuja" /></svg></span>
+    <span class="flotante"><svg><use href="#sobre" /></svg></span>
+    <span class="flotante"><svg><use href="#burbuja" /></svg></span>
+    <span class="flotante"><svg><use href="#sobre" /></svg></span>
+    <span class="flotante"><svg><use href="#burbuja" /></svg></span>
+</div>
+
 <header class="banner">
     <h1>Chat</h1>
-    {{!-- <p>Conéctate, comparte y conversa en tiempo real</p> --}}
+    <button type="button" id="themeToggle" class="theme-toggle">Modo claro</button>
 </header>
 
 <main class="chat">
@@ -9,7 +40,7 @@
         <input type="text" id="username" placeholder="ejemplo" autocomplete="off" required>
 
         <label for="message">Mensaje:</label>
-        <input type="text" id="message" placeholder="Escribe tu mensaje..." autocomplete="off" required>
+        <textarea id="message" placeholder="Escribe tu mensaje..." required></textarea>
 
         <button type="submit">Enviar</button>
     </form>
