@@ -369,6 +369,104 @@ body::after {
     line-height: 1.5;
 }
 
+.campo-mensaje {
+    position: relative;
+    flex: 1;
+    display: flex;
+    min-height: 80px;
+}
+
+#chatForm .campo-mensaje textarea {
+    width: 100%;
+    padding-right: 48px;
+}
+
+.emoji-btn {
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+    width: 34px;
+    height: 34px;
+    display: grid;
+    place-items: center;
+    padding: 0;
+    border: none;
+    border-radius: 50%;
+    background: transparent;
+    color: var(--suave);
+    cursor: pointer;
+    transition: color 0.3s, background 0.3s, transform 0.3s;
+}
+
+.emoji-btn svg {
+    width: 22px;
+    height: 22px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+}
+
+.emoji-btn:hover {
+    color: var(--primario);
+    background: rgba(99, 102, 241, 0.12);
+    transform: rotate(12deg) scale(1.08);
+}
+
+.emoji-panel {
+    position: absolute;
+    right: 0;
+    bottom: 52px;
+    z-index: 10;
+    width: 290px;
+    max-height: 220px;
+    overflow-y: auto;
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    gap: 2px;
+    padding: 10px;
+    border: 1px solid var(--borde);
+    border-radius: 14px;
+    background: var(--fondo-2);
+    box-shadow: 0 12px 30px var(--sombra);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(8px) scale(0.96);
+    transform-origin: bottom right;
+    transition: opacity 0.25s, transform 0.25s, visibility 0.25s;
+}
+
+.emoji-panel.abierto {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0) scale(1);
+}
+
+.emoji-panel button {
+    padding: 4px 0;
+    border: none;
+    border-radius: 8px;
+    background: transparent;
+    font-size: 1.3rem;
+    line-height: 1.3;
+    cursor: pointer;
+    transition: transform 0.2s, background 0.2s;
+}
+
+.emoji-panel button:hover {
+    background: rgba(99, 102, 241, 0.15);
+    transform: scale(1.25);
+}
+
+.emoji-panel::-webkit-scrollbar {
+    width: 6px;
+}
+
+.emoji-panel::-webkit-scrollbar-thumb {
+    background: var(--scroll);
+    border-radius: 6px;
+}
+
 #chatForm input::placeholder,
 #chatForm textarea::placeholder {
     color: var(--tenue);
@@ -382,7 +480,7 @@ body::after {
     box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.18);
 }
 
-#chatForm button {
+#chatForm button[type="submit"] {
     margin-top: auto;
     padding: 13px;
     border: none;
@@ -399,13 +497,13 @@ body::after {
     transition: background-position 0.5s, transform 0.3s, box-shadow 0.3s;
 }
 
-#chatForm button:hover {
+#chatForm button[type="submit"]:hover {
     background-position: 100% 0;
     transform: translateY(-1px);
     box-shadow: 0 10px 22px rgba(79, 70, 229, 0.35);
 }
 
-#chatForm button:active {
+#chatForm button[type="submit"]:active {
     transform: translateY(0);
 }
 

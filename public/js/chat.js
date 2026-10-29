@@ -53,6 +53,50 @@ chatForm.addEventListener('submit', (e) => {
     messageInput.focus();
 });
 
+const emojiBtn = document.getElementById('emojiBtn');
+const emojiPanel = document.getElementById('emojiPanel');
+
+const emojis = [
+    '😀', '😂', '🤣', '😊', '😍', '🥰', '😘', '😎',
+    '🤔', '😅', '😉', '😇', '🤗', '🤩', '🥳', '😴',
+    '🙄', '😢', '😭', '😡', '😱', '🤯', '😬', '🤐',
+    '👍', '👎', '👏', '🙌', '🙏', '💪', '👋', '🤝',
+    '❤️', '💙', '💜', '🔥', '✨', '🎉', '💯', '✅',
+    '❌', '⭐', '☕', '🍕', '🎂', '📩', '💬', '🚀'
+];
+
+const insertEmoji = (emoji) => {
+    const { selectionStart, selectionEnd, value } = messageInput;
+    messageInput.value = value.slice(0, selectionStart) + emoji + value.slice(selectionEnd);
+    const cursor = selectionStart + emoji.length;
+    messageInput.setSelectionRange(cursor, cursor);
+    messageInput.focus();
+};
+
+emojis.forEach((emoji) => {
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.textContent = emoji;
+    button.addEventListener('click', () => insertEmoji(emoji));
+    emojiPanel.appendChild(button);
+});
+
+const closeEmojiPanel = () => emojiPanel.classList.remove('abierto');
+
+emojiBtn.addEventListener('click', () => {
+    emojiPanel.classList.toggle('abierto');
+});
+
+document.addEventListener('click', (e) => {
+    if (!emojiPanel.contains(e.target) && !emojiBtn.contains(e.target)) closeEmojiPanel();
+});
+
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeEmojiPanel();
+});
+
+chatForm.addEventListener('submit', closeEmojiPanel);
+
 messageInput.addEventListener('keydown', (e) => {
     if (e.key === 'Enter' && !e.shiftKey) {
         e.preventDefault();

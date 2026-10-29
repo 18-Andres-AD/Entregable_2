@@ -71,7 +71,19 @@
         <input type="text" id="username" placeholder="ejemplo" autocomplete="off" required>
 
         <label for="message">Mensaje:</label>
-        <textarea id="message" placeholder="Escribe tu mensaje..." required></textarea>
+        <div class="campo-mensaje">
+            <textarea id="message" placeholder="Escribe tu mensaje..." required></textarea>
+
+            <button type="button" id="emojiBtn" class="emoji-btn" aria-label="Emojis">
+                <svg viewBox="0 0 24 24">
+                    <circle cx="12" cy="12" r="9" />
+                    <path d="M8.5 14.5a4.5 4.5 0 0 0 7 0" />
+                    <path d="M9 9.5h.01M15 9.5h.01" />
+                </svg>
+            </button>
+
+            <div id="emojiPanel" class="emoji-panel"></div>
+        </div>
 
         <button type="submit">Enviar</button>
     </form>
