@@ -178,6 +178,87 @@ body::after {
     padding: 26px 16px 6px;
 }
 
+.personaje {
+    position: absolute;
+    top: 8px;
+    left: 24px;
+    width: 86px;
+    height: 86px;
+    cursor: pointer;
+    animation: aparecer-boton 1s ease-out 0.8s both;
+}
+
+.personaje svg {
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+}
+
+.personaje .cuerpo {
+    animation: flotar-personaje 3s ease-in-out infinite;
+}
+
+.personaje .sombra {
+    fill: #000;
+    opacity: 0.25;
+    transform-box: fill-box;
+    transform-origin: center;
+    animation: sombra 3s ease-in-out infinite;
+}
+
+.personaje .ala {
+    fill: #fff;
+    stroke: #c7d2fe;
+    stroke-width: 1.5;
+    transform-box: fill-box;
+    animation: aletear 0.35s ease-in-out infinite alternate;
+}
+
+.personaje .ala-izq { transform-origin: right center; }
+.personaje .ala-der { transform-origin: left center; animation-name: aletear-der; }
+
+.personaje .gorra {
+    fill: #312e81;
+}
+
+.personaje .ojo {
+    fill: #fff;
+    transform-box: fill-box;
+    transform-origin: center;
+    animation: parpadear 4s infinite;
+}
+
+.personaje:hover svg {
+    animation: saludar 0.8s ease-in-out;
+}
+
+.personaje.saltar svg {
+    animation: salto 0.7s ease-out;
+}
+
+.globo {
+    position: absolute;
+    left: 78px;
+    top: 14px;
+    padding: 6px 12px;
+    border-radius: 12px 12px 12px 2px;
+    background: var(--tarjeta);
+    border: 1px solid var(--borde);
+    color: var(--texto);
+    font-size: 0.75rem;
+    font-weight: 600;
+    white-space: nowrap;
+    opacity: 0;
+    transform: translateY(6px) scale(0.9);
+    pointer-events: none;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+.personaje.saltar .globo {
+    animation: globo 2.2s ease-out;
+}
+
 .banner h1 {
     display: inline-block;
     margin: 0;
@@ -459,6 +540,51 @@ section h2::before {
     to { transform: translateX(18px) rotate(12deg); }
 }
 
+@keyframes flotar-personaje {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-6px); }
+}
+
+@keyframes sombra {
+    0%, 100% { transform: scaleX(1); opacity: 0.25; }
+    50% { transform: scaleX(0.75); opacity: 0.15; }
+}
+
+@keyframes aletear {
+    from { transform: rotate(12deg); }
+    to { transform: rotate(-14deg); }
+}
+
+@keyframes aletear-der {
+    from { transform: rotate(-12deg); }
+    to { transform: rotate(14deg); }
+}
+
+@keyframes parpadear {
+    0%, 92%, 100% { transform: scaleY(1); }
+    96% { transform: scaleY(0.1); }
+}
+
+@keyframes saludar {
+    0%, 100% { transform: rotate(0); }
+    25% { transform: rotate(-10deg); }
+    75% { transform: rotate(10deg); }
+}
+
+@keyframes salto {
+    0% { transform: translateY(0) scale(1, 1); }
+    20% { transform: translateY(0) scale(1.1, 0.9); }
+    50% { transform: translateY(-18px) scale(0.95, 1.05); }
+    80% { transform: translateY(0) scale(1.05, 0.95); }
+    100% { transform: translateY(0) scale(1, 1); }
+}
+
+@keyframes globo {
+    0% { opacity: 0; transform: translateY(6px) scale(0.9); }
+    15%, 80% { opacity: 1; transform: translateY(0) scale(1); }
+    100% { opacity: 0; transform: translateY(-4px) scale(1); }
+}
+
 @keyframes aparecer {
     from { opacity: 0; letter-spacing: 12px; }
     to { opacity: 1; letter-spacing: 6px; }
@@ -534,6 +660,18 @@ section h2::before {
     .theme-toggle {
         top: 16px;
         right: 16px;
+    }
+
+    .personaje {
+        top: 6px;
+        left: 10px;
+        width: 60px;
+        height: 60px;
+    }
+
+    .globo {
+        left: 56px;
+        top: 6px;
     }
 
     #chatForm {

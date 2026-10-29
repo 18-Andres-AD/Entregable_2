@@ -65,4 +65,11 @@ socket.on('messageLogs', (messages) => {
     messages.forEach(renderMessage);
 });
 
-socket.on('newMessage', renderMessage);
+const personaje = document.getElementById('personaje');
+
+socket.on('newMessage', (data) => {
+    renderMessage(data);
+    personaje.classList.remove('saltar');
+    void personaje.offsetWidth;
+    personaje.classList.add('saltar');
+});

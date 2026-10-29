@@ -30,6 +30,37 @@
 </div>
 
 <header class="banner">
+    <div class="personaje" id="personaje" aria-hidden="true">
+        <span class="globo">¡Nuevo mensaje!</span>
+        <svg viewBox="0 0 100 100">
+            <defs>
+                <linearGradient id="cuerpoColor" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0%" style="stop-color: var(--primario)" />
+                    <stop offset="100%" style="stop-color: var(--secundario)" />
+                </linearGradient>
+            </defs>
+
+            <ellipse class="sombra" cx="50" cy="93" rx="18" ry="3" />
+
+            <g class="cuerpo">
+                <path class="ala ala-izq" d="M24 52 C10 42 4 56 13 60 C6 65 13 72 25 64 Z" />
+                <path class="ala ala-der" d="M76 52 C90 42 96 56 87 60 C94 65 87 72 75 64 Z" />
+
+                <rect x="22" y="38" width="56" height="40" rx="7" fill="url(#cuerpoColor)" />
+                <path d="M23 42 50 58 77 42" fill="none" stroke="#fff" stroke-opacity="0.55" stroke-width="2" stroke-linejoin="round" />
+
+                <path class="gorra" d="M33 39 Q50 22 67 39 Z" />
+                <rect class="gorra" x="29" y="37" width="42" height="4" rx="2" />
+
+                <ellipse class="ojo" cx="41" cy="64" rx="3" ry="3.8" />
+                <ellipse class="ojo" cx="59" cy="64" rx="3" ry="3.8" />
+                <circle cx="35" cy="70" r="2.6" fill="#f9a8d4" opacity="0.6" />
+                <circle cx="65" cy="70" r="2.6" fill="#f9a8d4" opacity="0.6" />
+                <path d="M46 70 Q50 74 54 70" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" />
+            </g>
+        </svg>
+    </div>
+
     <h1>Chat</h1>
     <button type="button" id="themeToggle" class="theme-toggle">Modo claro</button>
 </header>
